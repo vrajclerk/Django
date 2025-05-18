@@ -17,7 +17,7 @@ Including another URLconf
 from tkinter.font import names
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from . import views
 
 urlpatterns = [
@@ -25,4 +25,6 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
+    path('car/',include('car.urls')),
+    path('_reload_/', include('django_browser_reload.urls')),
 ]
