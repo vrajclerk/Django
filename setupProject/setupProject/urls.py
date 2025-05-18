@@ -18,13 +18,15 @@ from tkinter.font import names
 
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',views.home,name='home'),
-    path('about/',views.about,name='about'),
-    path('contact/',views.contact,name='contact'),
-    path('car/',include('car.urls')),
-    path('_reload_/', include('django_browser_reload.urls')),
-]
+    path("admin/", admin.site.urls),
+    path("", views.home, name="home"),
+    path("about/", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
+    path("car/", include("car.urls")),
+    path("_reload_/", include("django_browser_reload.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
